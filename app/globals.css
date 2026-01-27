@@ -1,11 +1,26 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-background: #000000;
+  --color-background-secondary: #0a0a0a;
+  --color-foreground: #ffffff;
+  --color-primary: #3ECF8E;
+  --color-primary-dark: #2aa06a;
+  --color-muted: #a0a0a0;
+  --color-muted-dark: #666666;
+
+  --font-family-mono: "JetBrains Mono", "Fira Code", monospace;
+  --font-family-sans: "Inter", system-ui, sans-serif;
+
+  --animate-glow-pulse: glow-pulse 2s ease-in-out infinite;
+  --animate-scan-line: scan-line 8s linear infinite;
+  --animate-grid-flow: grid-flow 20s linear infinite;
+}
 
 @layer base {
   body {
-    background-color: #000000;
-    color: #ffffff;
+    background-color: var(--color-background);
+    color: var(--color-foreground);
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
@@ -162,6 +177,27 @@
 }
 
 /* Custom Animations */
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(62, 207, 142, 0.3);
+    opacity: 1;
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(62, 207, 142, 0.6);
+    opacity: 0.8;
+  }
+}
+
+@keyframes scan-line {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+@keyframes grid-flow {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(50px); }
+}
+
 @keyframes typing {
   from {
     width: 0;
