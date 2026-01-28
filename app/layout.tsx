@@ -15,22 +15,26 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Your Name | Software Developer",
+  title: "Rytix.tech",
   description:
-    "Portfolio of a software developer showcasing projects, skills, and experience in modern web development.",
+    "Portfolio of Chung Seong Kah - Global Technology Senior Cloud Engineer at Deloitte. Specializing in Cloud Operations, AIOps, Infrastructure Automation, Vibe Coder, and Automation using n8n.",
   keywords: [
-    "software developer",
-    "web development",
-    "portfolio",
-    "Next.js",
-    "React",
-    "TypeScript",
+    "cloud engineer",
+    "aws",
+    "azure",
+    "gcp",
+    "aiops",
+    "devops",
+    "infrastructure automation",
+    "vibe coder",
+    "n8n",
+    "deloitte",
   ],
-  authors: [{ name: "Your Name" }],
+  authors: [{ name: "Chung Seong Kah" }],
   openGraph: {
-    title: "Your Name | Software Developer",
+    title: "Rytix.tech",
     description:
-      "Portfolio of a software developer showcasing projects, skills, and experience in modern web development.",
+      "Portfolio of Chung Seong Kah - Global Technology Senior Cloud Engineer at Deloitte. Specializing in Cloud Operations, AIOps, and Infrastructure Automation.",
     type: "website",
   },
 };

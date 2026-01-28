@@ -20,23 +20,24 @@ export default function About() {
           <FadeIn delay={0.2} direction="right">
             <div className="space-y-4 text-muted">
               <p className="leading-relaxed">
-                Hello! I'm <span className="text-primary font-mono">Your Name</span>, a
-                software developer passionate about creating exceptional digital
-                experiences. My journey in software development started when I
-                discovered the power of code to bring ideas to life.
+                Hello! I'm <span className="text-primary font-mono">Chung Seong Kah</span>, a
+                Global Technology Senior Cloud Engineer at Deloitte. My journey in technology
+                started in network operations and evolved into cloud infrastructure and AIOps,
+                driven by a passion for building resilient, scalable systems.
               </p>
 
               <p className="leading-relaxed">
-                I specialize in building scalable web applications with modern
-                technologies. My focus is on writing clean, maintainable code
-                while delivering performant and accessible user experiences.
+                With over 7 years of experience across network operations, system engineering,
+                and cloud platforms, I specialize in AWS and Azure cloud solutions, infrastructure
+                automation, and implementing AIOps practices. Currently based in Kuala Lumpur, I work
+                on enterprise-scale cloud operations at Deloitte.
               </p>
 
               <p className="leading-relaxed">
-                Fast-forward to today, I've had the privilege of working on
-                diverse projects ranging from startups to enterprise applications.
-                I'm constantly learning and exploring new technologies to stay at
-                the forefront of web development.
+                My career journey took me from Network Operations at Canaan Communication & Technologies,
+                through system engineering at SKIDATA, to AWS Cloud Support at Maxis Business, and now
+                to my current role at Deloitte. Along the way, I've earned certifications in AWS, Azure,
+                Oracle Cloud, AIOps, and ITIL 4.
               </p>
 
               <div className="pt-6">
@@ -46,15 +47,19 @@ export default function About() {
                 <ul className="space-y-2 font-mono text-sm">
                   <li className="flex items-center gap-2">
                     <span className="text-primary">▹</span>
-                    <span>Building scalable React applications</span>
+                    <span>Cloud platform operations & automation</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <span className="text-primary">▹</span>
-                    <span>Exploring serverless architectures</span>
+                    <span>AIOps implementation & AI in IT operations</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <span className="text-primary">▹</span>
-                    <span>Contributing to open source</span>
+                    <span>Multi-cloud infrastructure (AWS, Azure, Oracle)</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-primary">▹</span>
+                    <span>ITIL 4 best practices & service management</span>
                   </li>
                 </ul>
               </div>

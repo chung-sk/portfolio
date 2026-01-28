@@ -6,7 +6,7 @@ export default function Contact() {
       <div className="max-w-2xl mx-auto text-center">
         <FadeIn>
           <div className="flex items-center justify-center gap-3 mb-8">
-            <span className="font-mono text-primary text-xl">05.</span>
+            <span className="font-mono text-primary text-xl">06.</span>
             <h2 className="font-mono text-3xl md:text-4xl font-bold text-foreground">
               Get In Touch <span className="text-primary">_</span>
             </h2>

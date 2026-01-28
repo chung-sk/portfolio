@@ -14,32 +14,56 @@ interface Skill {
 }
 
 const skills: Skill[] = [
-  // Languages
-  { name: "TypeScript", level: 5, category: "Languages" },
-  { name: "JavaScript", level: 5, category: "Languages" },
+  // Cloud Platforms
+  { name: "AWS", level: 5, category: "Cloud" },
+  { name: "Azure", level: 5, category: "Cloud" },
+  { name: "Oracle Cloud", level: 4, category: "Cloud" },
+  { name: "GCP", level: 4, category: "Cloud" },
+  { name: "Multi-Cloud", level: 4, category: "Cloud" },
+
+  // DevOps & Automation
+  { name: "AIOps", level: 5, category: "DevOps" },
+  { name: "ITIL 4", level: 5, category: "DevOps" },
+  { name: "Infrastructure as Code", level: 4, category: "DevOps" },
+  { name: "CI/CD", level: 4, category: "DevOps" },
+  { name: "Terraform", level: 4, category: "DevOps" },
+  { name: "Docker", level: 4, category: "DevOps" },
+  { name: "Kubernetes", level: 3, category: "DevOps" },
+
+  // Monitoring & Operations
+  { name: "CloudWatch", level: 5, category: "Monitoring" },
+  { name: "Azure Monitor", level: 4, category: "Monitoring" },
+  { name: "Prometheus", level: 3, category: "Monitoring" },
+  { name: "Grafana", level: 3, category: "Monitoring" },
+  { name: "Zabbix", level: 4, category: "Monitoring" },
+
+  // Networking & Systems
+  { name: "Network Engineering", level: 5, category: "Systems" },
+  { name: "Linux", level: 4, category: "Systems" },
+  { name: "Windows Server", level: 4, category: "Systems" },
+  { name: "System Integration", level: 5, category: "Systems" },
+
+  // Scripting & Languages
   { name: "Python", level: 4, category: "Languages" },
-  { name: "Go", level: 3, category: "Languages" },
+  { name: "Bash", level: 4, category: "Languages" },
+  { name: "PowerShell", level: 4, category: "Languages" },
+  { name: "SQL", level: 4, category: "Languages" },
+  { name: "Node.js", level: 4, category: "Languages" },
+  { name: "Flutter", level: 3, category: "Languages" },
 
-  // Frontend
-  { name: "React", level: 5, category: "Frontend" },
-  { name: "Next.js", level: 5, category: "Frontend" },
-  { name: "Tailwind CSS", level: 5, category: "Frontend" },
-  { name: "Framer Motion", level: 4, category: "Frontend" },
-
-  // Backend
-  { name: "Node.js", level: 5, category: "Backend" },
-  { name: "PostgreSQL", level: 4, category: "Backend" },
-  { name: "MongoDB", level: 4, category: "Backend" },
-  { name: "GraphQL", level: 4, category: "Backend" },
-
-  // Tools
-  { name: "Git", level: 5, category: "Tools" },
-  { name: "Docker", level: 4, category: "Tools" },
-  { name: "AWS", level: 3, category: "Tools" },
-  { name: "Vercel", level: 5, category: "Tools" },
+  // Vibe Coding
+  { name: "Supabase", level: 4, category: "Vibe Coding" },
+  { name: "Vercel", level: 5, category: "Vibe Coding" },
+  { name: "PostgreSQL", level: 4, category: "Vibe Coding" },
+  { name: "Stripe", level: 3, category: "Vibe Coding" },
+  { name: "Cursor", level: 5, category: "Vibe Coding" },
+  { name: "Claude Code Copilot", level: 5, category: "Vibe Coding" },
+  { name: "Figma", level: 4, category: "Vibe Coding" },
+  { name: "MCP", level: 4, category: "Vibe Coding" },
+  { name: "Skills", level: 4, category: "Vibe Coding" },
 ];
 
-const categories = ["All", "Languages", "Frontend", "Backend", "Tools"];
+const categories = ["All", "Cloud", "DevOps", "Monitoring", "Systems", "Languages", "Vibe Coding"];
 
 export default function Skills() {
   const [selectedCategory, setSelectedCategory] = useState("All");

@@ -73,7 +73,7 @@ export default function Projects() {
       <div className="max-w-6xl mx-auto">
         <FadeIn>
           <div className="flex items-center gap-3 mb-12">
-            <span className="font-mono text-primary text-xl">04.</span>
+            <span className="font-mono text-primary text-xl">05.</span>
             <h2 className="font-mono text-3xl md:text-4xl font-bold text-foreground">
               Projects <span className="text-primary">_</span>
             </h2>

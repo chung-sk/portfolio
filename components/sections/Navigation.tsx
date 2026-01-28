@@ -53,7 +53,7 @@ export default function Navigation() {
               <span className="text-foreground group-hover:text-primary transition-colors duration-300">
                 {"<"}
               </span>
-              <span className="text-primary">YN</span>
+              <span className="text-primary">Rytix.tech</span>
               <span className="text-foreground group-hover:text-primary transition-colors duration-300">
                 {"/>"}
               </span>

@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 export default function Hero() {
   const [text, setText] = useState("");
-  const fullText = "Software Developer";
+  const fullText = "Cloud Engineer";
   const [showCursor, setShowCursor] = useState(true);
 
   useEffect(() => {
@@ -56,7 +56,7 @@ export default function Hero() {
           {/* Main Heading */}
           <h1 className="font-mono text-4xl md:text-6xl lg:text-7xl font-bold">
             <span className="text-foreground">{"<"}</span>
-            <span className="glow-text text-primary">Your Name</span>
+            <span className="glow-text text-primary">Chung Seong Kah</span>
             <span className="text-foreground">{" />"}</span>
           </h1>
 
@@ -80,9 +80,9 @@ export default function Hero() {
             transition={{ delay: 2, duration: 1 }}
             className="max-w-2xl mx-auto text-base md:text-lg text-muted leading-relaxed"
           >
-            Building elegant solutions to complex problems.
+            Global Technology Senior Cloud Engineer at Deloitte.
             <br />
-            Specializing in modern web technologies and scalable architectures.
+            Specializing in Cloud Operations, AIOps, Infrastructure Automation, Vibe Coder, and Automation using n8n.
           </motion.p>
 
           {/* CTA Buttons */}
