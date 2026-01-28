@@ -68,7 +68,7 @@ export default function Experience() {
   const selectedExperience = experiences[selectedIndex];
 
   return (
-    <section id="experience" className="py-20 md:py-32 px-6">
+    <section id="experience" className="py-8 md:py-16 px-6">
       <div className="max-w-6xl mx-auto">
         <FadeIn>
           <div className="flex items-center gap-3 mb-12">
@@ -80,17 +80,17 @@ export default function Experience() {
           </div>
         </FadeIn>
 
-        <div className="grid md:grid-cols-[200px_1fr] gap-8">
+        <div className="flex flex-col md:grid md:grid-cols-[200px_1fr] gap-6 md:gap-8">
           {/* Company List */}
           <FadeIn delay={0.2} direction="right">
-            <div className="flex md:flex-col gap-2 overflow-x-auto md:overflow-visible">
+            <div className="flex md:flex-col gap-2 overflow-x-auto md:overflow-visible pb-2 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0">
               {experiences.map((exp, index) => (
                 <button
                   key={index}
                   onClick={() => setSelectedIndex(index)}
                   className={`
-                    px-4 py-3 text-left font-mono text-sm whitespace-nowrap
-                    border-l-2 transition-all duration-300
+                    px-4 py-3 text-left font-mono text-sm whitespace-nowrap shrink-0
+                    border-l-2 md:border-l-2 border-b-2 md:border-b-0 transition-all duration-300
                     ${
                       selectedIndex === index
                         ? "border-primary bg-primary/10 text-primary"

@@ -2,7 +2,7 @@ import FadeIn from "@/components/animations/FadeIn";
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-20 md:py-32 px-6">
+    <section id="contact" className="py-8 md:py-16 px-6">
       <div className="max-w-2xl mx-auto text-center">
         <FadeIn>
           <div className="flex items-center justify-center gap-3 mb-8">

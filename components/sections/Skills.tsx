@@ -1,10 +1,7 @@
 "use client";
 
 import FadeIn from "@/components/animations/FadeIn";
-import StaggerContainer, {
-  StaggerItem,
-} from "@/components/animations/StaggerContainer";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 
 interface Skill {
@@ -73,11 +70,20 @@ export default function Skills() {
       ? skills
       : skills.filter((skill) => skill.category === selectedCategory);
 
+  // Group skills by category for display
+  const groupedSkills = categories
+    .filter((cat) => cat !== "All")
+    .map((category) => ({
+      category,
+      skills: filteredSkills.filter((s) => s.category === category),
+    }))
+    .filter((group) => group.skills.length > 0);
+
   return (
-    <section id="skills" className="py-20 md:py-32 px-6 bg-background-secondary">
+    <section id="skills" className="py-8 md:py-16 px-6 bg-background-secondary">
       <div className="max-w-6xl mx-auto">
         <FadeIn>
-          <div className="flex items-center gap-3 mb-12">
+          <div className="flex items-center gap-3 mb-8">
             <span className="font-mono text-primary text-xl">02.</span>
             <h2 className="font-mono text-3xl md:text-4xl font-bold text-foreground">
               Skills <span className="text-primary">_</span>
@@ -88,15 +94,15 @@ export default function Skills() {
 
         {/* Category Filter */}
         <FadeIn delay={0.2}>
-          <div className="flex flex-wrap gap-3 mb-12 justify-center">
+          <div className="flex flex-wrap gap-2 mb-6">
             {categories.map((category) => (
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-4 py-2 font-mono text-sm transition-all duration-300 ${
+                className={`px-3 py-1 font-mono text-xs transition-all duration-200 ${
                   selectedCategory === category
-                    ? "terminal-border bg-primary/10 text-primary"
-                    : "border border-muted-dark/30 text-muted hover:border-primary/50 hover:text-foreground"
+                    ? "bg-primary/20 text-primary border border-primary/50"
+                    : "border border-muted-dark/30 text-muted hover:border-primary/30 hover:text-foreground"
                 }`}
               >
                 {category}
@@ -105,83 +111,146 @@ export default function Skills() {
           </div>
         </FadeIn>
 
-        {/* Skills Grid */}
-        <StaggerContainer
-          key={selectedCategory}
-          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
-        >
-          {filteredSkills.map((skill, index) => (
-            <StaggerItem key={`${skill.name}-${index}`}>
-              <SkillCard skill={skill} />
-            </StaggerItem>
-          ))}
-        </StaggerContainer>
+        {/* Terminal-style Skills List */}
+        <FadeIn delay={0.3}>
+          <div className="font-mono">
+            {/* Terminal Header */}
+            <div className="flex items-center gap-2 sm:gap-4 pb-2 mb-4 border-b border-primary/20 text-xs text-muted-dark">
+              <span className="flex-1 min-w-0">PROCESS</span>
+              <span className="w-24 text-right hidden sm:block">CATEGORY</span>
+              <span className="w-14 sm:w-20 text-right shrink-0">LEVEL</span>
+            </div>
+
+            {/* Skills List */}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={selectedCategory}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.2 }}
+                className="space-y-6"
+              >
+                {selectedCategory === "All" ? (
+                  // Grouped view
+                  groupedSkills.map((group, groupIndex) => (
+                    <div key={group.category}>
+                      {/* Category Header */}
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className="text-primary text-xs">
+                          [{group.category.toUpperCase()}]
+                        </span>
+                        <div className="flex-1 h-[1px] bg-primary/10" />
+                      </div>
+
+                      {/* Skills in Category */}
+                      <div className="space-y-1">
+                        {group.skills.map((skill, index) => (
+                          <SkillRow
+                            key={skill.name}
+                            skill={skill}
+                            index={groupIndex * 10 + index}
+                            showCategory={false}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  ))
+                ) : (
+                  // Single category view
+                  <div className="space-y-1">
+                    {filteredSkills.map((skill, index) => (
+                      <SkillRow
+                        key={skill.name}
+                        skill={skill}
+                        index={index}
+                        showCategory={true}
+                      />
+                    ))}
+                  </div>
+                )}
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Terminal Footer */}
+            <div className="mt-6 pt-4 border-t border-primary/20 text-xs text-muted-dark">
+              <span className="text-primary">{filteredSkills.length}</span> skills loaded
+            </div>
+          </div>
+        </FadeIn>
       </div>
     </section>
   );
 }
 
-function SkillCard({ skill }: { skill: Skill }) {
+function SkillRow({
+  skill,
+  index,
+  showCategory,
+}: {
+  skill: Skill;
+  index: number;
+  showCategory: boolean;
+}) {
   const [isHovered, setIsHovered] = useState(false);
+
+  // Generate level indicator: ■■■■□
+  const levelIndicator = Array.from({ length: 5 }, (_, i) => (
+    <span
+      key={i}
+      className={`${
+        i < skill.level
+          ? "text-primary"
+          : "text-muted-dark/30"
+      }`}
+    >
+      ■
+    </span>
+  ));
 
   return (
     <motion.div
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
-      className="relative group h-full"
+      initial={{ opacity: 0, x: -20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ delay: index * 0.02, duration: 0.3 }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className={`
+        group flex items-center gap-2 sm:gap-4 py-2 px-3 -mx-3 rounded
+        transition-all duration-200
+        ${isHovered ? "bg-primary/5" : ""}
+      `}
     >
-      {/* Card */}
-      <div className="terminal-border bg-background p-4 h-full flex flex-col justify-between hover:bg-primary/5 transition-all duration-300 relative overflow-hidden">
-        {/* Skill Name */}
-        <div className="relative z-10">
-          <p className="font-mono text-sm md:text-base text-foreground mb-3">
-            {skill.name}
-          </p>
+      {/* Process Indicator */}
+      <span
+        className={`
+          text-xs transition-colors duration-200 shrink-0
+          ${isHovered ? "text-primary" : "text-muted-dark"}
+        `}
+      >
+        ▸
+      </span>
 
-          {/* Level Indicator */}
-          <div className="flex gap-1">
-            {[...Array(5)].map((_, i) => (
-              <motion.div
-                key={i}
-                initial={{ scaleX: 0 }}
-                animate={{
-                  scaleX: isHovered ? 1 : i < skill.level ? 1 : 0.3,
-                }}
-                transition={{ delay: i * 0.05, duration: 0.2 }}
-                className={`h-1 flex-1 origin-left ${
-                  i < skill.level ? "bg-primary" : "bg-muted-dark/30"
-                }`}
-              />
-            ))}
-          </div>
-        </div>
+      {/* Skill Name */}
+      <span
+        className={`
+          flex-1 min-w-0 text-sm transition-colors duration-200 truncate
+          ${isHovered ? "text-primary" : "text-foreground"}
+        `}
+      >
+        {skill.name}
+      </span>
 
-        {/* Category Tag */}
-        <div className="relative z-10 mt-3">
-          <span className="font-mono text-xs text-muted-dark">
-            // {skill.category.toLowerCase()}
-          </span>
-        </div>
+      {/* Category Badge (conditional) */}
+      {showCategory && (
+        <span className="w-24 text-right text-xs text-muted-dark hidden sm:block shrink-0">
+          {skill.category}
+        </span>
+      )}
 
-        {/* Hover Glow Effect */}
-        <motion.div
-          className="absolute inset-0 bg-gradient-to-br from-primary/0 via-primary/5 to-primary/0"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: isHovered ? 1 : 0 }}
-          transition={{ duration: 0.3 }}
-        />
-
-        {/* Corner Accent */}
-        <motion.div
-          className="absolute top-0 right-0 w-0 h-0"
-          animate={{
-            borderLeft: isHovered ? "20px solid transparent" : "0px solid transparent",
-            borderTop: isHovered
-              ? "20px solid rgba(62, 207, 142, 0.2)"
-              : "0px solid transparent",
-          }}
-          transition={{ duration: 0.2 }}
-        />
+      {/* Level Indicator */}
+      <div className="w-14 sm:w-20 text-right text-xs flex justify-end gap-[1px] shrink-0">
+        {levelIndicator}
       </div>
     </motion.div>
   );

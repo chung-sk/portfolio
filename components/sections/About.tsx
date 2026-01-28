@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function About() {
   return (
-    <section id="about" className="py-20 md:py-32 px-6">
+    <section id="about" className="py-8 md:py-16 px-6">
       <div className="max-w-6xl mx-auto">
         <FadeIn>
           <div className="flex items-center gap-3 mb-12">
